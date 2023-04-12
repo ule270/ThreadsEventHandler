@@ -23,9 +23,7 @@ public class EventListener extends Thread{
 //        The Handler should print out the reply
         while (!readyToQuit()) {
             if (shouldReply()) {
-                eventTracker.handle(messageToListenFor, () -> {
-                    System.out.println(messageToReplyWith);
-                });
+                reply();
             }
         }
     }
@@ -39,5 +37,8 @@ public class EventListener extends Thread{
     }
 
     public void reply() {
+        eventTracker.handle(messageToListenFor, () -> {
+            System.out.println(messageToReplyWith);
+        });
     }
 }
