@@ -17,6 +17,9 @@ public class EventListener extends Thread{
     }
 
     public void run() {
+        while (readyToQuit().equals(false)){
+            run();
+        }
     }
 
     public Boolean readyToQuit() {
@@ -24,7 +27,7 @@ public class EventListener extends Thread{
     }
 
     public Boolean shouldReply() {
-        return null;
+        return eventTracker.has(messageToListenFor);
     }
 
     public void reply() {
