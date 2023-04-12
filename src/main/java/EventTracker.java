@@ -31,10 +31,14 @@ public class EventTracker implements Tracker {
     synchronized public Boolean has(String message) {
         return tracker.containsKey(message) && tracker.get(message) > 0;
         //if .containsKey is false, then it will not even run the second one;
-
     }
 
     synchronized public void handle(String message, EventHandler e) {
+        e.handle();
+        //actually calling handle() from EventHandler interface;
+        if(has(message)){
+            tracker.put(message, tracker.get(message)-1);
+        }
     }
 
     // Do not use this. This constructor is for tests only
