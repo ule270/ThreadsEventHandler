@@ -17,13 +17,21 @@ public class EventListener extends Thread{
     }
 
     public void run() {
-        while (readyToQuit().equals(false)){
-            run();
+//        In the while loop, if should reply returns true,
+//        the Tracker should have its "handle" method called
+//        passing in an instance of EventHandler.
+//        The Handler should print out the reply
+        while (!readyToQuit()) {
+            if (shouldReply()) {
+                eventTracker.handle(messageToListenFor, () -> {
+                    System.out.println(messageToReplyWith);
+                });
+            }
         }
     }
 
     public Boolean readyToQuit() {
-        return null;
+        return eventTracker.has("quit");
     }
 
     public Boolean shouldReply() {
