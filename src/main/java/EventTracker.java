@@ -15,6 +15,11 @@ public class EventTracker implements Tracker {
         return null;
     }
 
+    @Override
+    public Map<String, Integer> tracker() {
+        return null;
+    }
+
     synchronized public void push(String message) {
     }
 

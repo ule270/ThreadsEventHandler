@@ -1,6 +1,8 @@
 import java.util.Map;
 
-public interface Tracker {
+public interface Tracker{
+
+    Map<String, Integer> tracker();
 
     void push(String message);
 

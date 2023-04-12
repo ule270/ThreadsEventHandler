@@ -1,4 +1,4 @@
-public class EventListener {
+public class EventListener extends Thread{
 
     private String messageToListenFor;
     private String messageToReplyWith;
